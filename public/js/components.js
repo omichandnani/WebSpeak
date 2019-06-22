@@ -48,4 +48,20 @@ class Components {
   static getContainer(counter) {
     return `<div id="container-${counter}" class="parentPosition" style="height: 300px; width: 100%; padding:20px;"><span class="badge badge-pill badge-secondary badgePosition">container-${counter}</span><div class="container"><div class="row" id="content"></div></div></div>`
   }
+
+  static getFooter(counter) {
+    return `<div class="footer parentPosition" id="footer-${counter}">
+              <span class="badge badge-pill badge-secondary badgePosition">footer-${counter}</span>
+              <div class="footer-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+              </div>
+              <div class="footer-copyright">
+                This footer is made with <i class="fas fa-heart"></i> at EngHack
+              </div>
+            </div>`;
+  }
 }

@@ -5,6 +5,7 @@ class Counters {
     this.bannerCounter = 1;
     this.textCounter = 1;
     this.containerCounter = 1;
+    this.footerCounter = 1;
   }
 }
 var counter = new Counters();
