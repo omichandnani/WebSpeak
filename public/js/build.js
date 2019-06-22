@@ -93,10 +93,32 @@ function isSubCommand(index, command, transcriptArray) {
         }
         return true;
       case "below":
-        // code block
+      if (transcriptArray[index + 4] !== undefined){
+        var num = transcriptArray[index + 4]
+        if (!isNaN(num)) {
+            var element = document.getElementById(`${transcriptArray[index + 3]}-${num}`);
+            console.log("IS NUM:", Components.getComponent(transcriptArray[index+1]));
+            element.insertAdjacentHTML("afterend", Components.getComponent(transcriptArray[index+1]));
+          } else {
+            var element = document.getElementById(`${transcriptArray[index + 3]}-${word2num[transcriptArray[index+4]]}`);
+            console.log("IS NOT NUM:", Components.getComponent(transcriptArray[index+1]));
+            element.insertAdjacentHTML("afterend", Components.getComponent(transcriptArray[index+1]));
+          }
+      }
         return true;
       case "above":
-        // code block
+        if (transcriptArray[index + 4] !== undefined){
+        var num = transcriptArray[index + 4]
+        if (!isNaN(num)) {
+            var element = document.getElementById(`${transcriptArray[index + 3]}-${num}`);
+            console.log("IS NUM:", Components.getComponent(transcriptArray[index+1]));
+            element.insertAdjacentHTML("beforebegin", Components.getComponent(transcriptArray[index+1]));
+          } else {
+            var element = document.getElementById(`${transcriptArray[index + 3]}-${word2num[transcriptArray[index+4]]}`);
+            console.log("IS NOT NUM:", Components.getComponent(transcriptArray[index+1]));
+            element.insertAdjacentHTML("beforebegin", Components.getComponent(transcriptArray[index+1]));
+          }
+      }
         return true;
       case "about":
       // code block

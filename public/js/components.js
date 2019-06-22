@@ -64,4 +64,24 @@ class Components {
               </div>
             </div>`;
   }
+   static getComponent(component) {
+    switch(component) {
+      case "banner" : return Components.getBanner(counter.bannerCounter);
+      break;
+
+      case "navigation" : return Components.getBanner(counter.navigationCounter);
+      break;
+
+      case "card" : return Components.getBanner(counter.cardCounter);
+      break;
+
+      case "text" : return Components.getText(counter.textCounter);
+      break;
+
+      case "container" : return Components.getContainer(counter.containerCounter);
+      break;
+
+    }
+
+   }
 }
