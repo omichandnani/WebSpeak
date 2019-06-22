@@ -48,4 +48,24 @@ class Components {
   static getContainer(counter) {
     return `<div id="container-${counter}" class="parentPosition" style="height: 300px; width: 100%; padding:20px;"><span class="badge badge-pill badge-secondary badgePosition">container-${counter}</span><div class="container"><div class="row" id="content"></div></div></div>`
   }
+   static getComponent(component) {
+    switch(component) {
+      case "banner" : return Components.getBanner(counter.bannerCounter);
+      break;
+
+      case "navigation" : return Components.getBanner(counter.navigationCounter);
+      break;
+
+      case "card" : return Components.getBanner(counter.cardCounter);
+      break;
+
+      case "text" : return Components.getText(counter.textCounter);
+      break;
+
+      case "container" : return Components.getContainer(counter.containerCounter);
+      break;
+
+    }
+
+   }
 }
