@@ -84,6 +84,13 @@ function isSubCommand(index, command, transcriptArray) {
   switch(transcriptArray[index + 2]) {
       case "to":
         // code block
+        if(transcriptArray[index+1]=="card"){
+          issubcontainer(index,command,transcriptArray)
+        }
+        else if(transcriptArray[index+1]=="text"){
+          issubcontainertext(index,command,transcriptArray)
+
+        }
         return true;
       case "below":
         // code block
@@ -101,6 +108,37 @@ function isSubCommand(index, command, transcriptArray) {
     }
   }
 }
+
+function issubcontainer(index,command,transcriptArray){
+  if(transcriptArray[index + 3] != undefined) {
+    var component = document.getElementById(`${transcriptArray[index + 3]}-${word2num[transcriptArray[index + 4]]}`)
+    if(component !==undefined) {
+      component.innerHTML += `<div id="card-${Counters.cardCounter}"  style="margin: 20px;" class="card-trip">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg">
+      <div class="card-trip-infos" padding: 40px>
+        <div>
+          <h2>Title here</h2>
+          <p>Short here!</p>
+        </div>
+        <h2 class="card-trip-pricing">£99.99</h2>
+        <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/>
+      </div>
+    </div>`;
+      Counters.cardCounter++;
+    }
+  }
+}
+
+function issubcontainertext(index,command,transcriptArray){
+  if(transcriptArray[index + 3] != undefined) {
+    var component = document.getElementById(`${transcriptArray[index + 3]}-${word2num[transcriptArray[index + 4]]}`)
+    if(component !==undefined) {
+      component.innerHTML += `<h4 id="card-${Counters.textCounter}">AaBbCc</h4>`;
+      Counters.textCounter++;
+    }
+  }
+}
+
 
 function getCodedString(component) {
   switch(component) {
