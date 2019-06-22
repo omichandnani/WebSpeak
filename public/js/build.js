@@ -35,6 +35,7 @@ let word2num = {
   "three": 3,
   "four": 4
 }
+
 function checkCommand(index, command, transcriptArray) {
   switch(command) {
     case "add":
@@ -53,8 +54,16 @@ function checkCommand(index, command, transcriptArray) {
       render.scrollTop = render.scrollHeight;
       break;
     case "remove":
-      if(transcriptArray[index + 1] !== undefined && components.includes(transcriptArray[index + 1])){
-          document.getElementById(`${transcriptArray[index + 1]}-${word2num[transcriptArray[index + 2]]}`).style.display = 'none';
+      if(transcriptArray[index + 2] !== undefined && components.includes(transcriptArray[index + 1])){
+          var num = transcriptArray[index + 2];
+          if (!isNaN(num)) {
+            var element = document.getElementById(`${transcriptArray[index + 1]}-${num}`);
+            element.parentNode.removeChild(element);
+          } else {
+            var element = document.getElementById(`${transcriptArray[index + 1]}-${word2num[transcriptArray[index + 2]]}`);
+            element.parentNode.removeChild(element);
+          }
+          
           if (first) {
               document.getElementById("initial-message").style.display = "none";
               first = false;
