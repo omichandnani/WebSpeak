@@ -1,0 +1,70 @@
+
+<div class="container text-center" style="display: flex; flex-direction: column; height: 100%; margin-top: 200px;">
+  <h1 style="font-size: 100px;">WebSpeak</h1>
+  <h3>Build websites using your voice</h3>
+  <div style="display: flex; justify-content: center;">
+    <div class="card-category" id="transcription" style="background-color: #34495e; width: 30%; height: 75px;  padding: 20px; font-size: 16px; margin-top: 10px;">
+      <h4 style="color: #F6FAFD; margin-top:3px;">Say 'start' to begin</h4>
+    </div>
+  </div>
+</div>
+
+<style>
+html, body {
+  background-color: #F6FAFD;
+}
+</style>
+
+<audio id="reader"></audio>
+
+<script>
+
+var reader = document.getElementById("reader");
+fetch("https://aein7.lib.id/language-tutor@dev/texttospeech/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    message: "Welcome to WebSpeak. Build websites using your voice. Say start to begin.",
+    languageCode: "en-US"
+  })
+})
+.then(response => response.json())
+.then((data) => {
+  reader.src = "data:audio/ogg;base64," + data.audioContent;
+  setTimeout(() => {
+    reader.play();
+  }, 1000);
+});
+
+window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+let finalTranscript = '';
+let recognition = new window.SpeechRecognition();
+recognition.interimResults = true;
+recognition.maxAlternatives = 10;
+recognition.continuous = true;
+recognition.onresult = (event) => {
+  let interimTranscript = '';
+  for (let i = event.resultIndex, len = event.results.length; i < len; i++) {
+    let transcript = event.results[i][0].transcript.toLowerCase();
+    console.log(transcript)
+    if (event.results[i].isFinal) {
+      console.log("IS FINAL");
+      finalTranscript += transcript;
+      finalTranscriptArray = finalTranscript.split(" ");
+      for (var j = 0; j < finalTranscriptArray.length; j++) {
+        if(finalTranscriptArray[j] === "start") {
+          window.location.href = "/build";
+        }
+      }
+
+    } else {
+      interimTranscript += transcript;
+    }
+  }
+  document.querySelector('#transcription').innerHTML = finalTranscript + '<p style="color:#ddd;">' + interimTranscript + '</p>';
+
+}
+recognition.start();
+</script>
