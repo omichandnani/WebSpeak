@@ -1,7 +1,5 @@
 console.log("HELLO WORLD");
 var first = true;
-
-
 let render = document.getElementById("render");
 window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
 let finalTranscript = '';
@@ -31,7 +29,12 @@ recognition.onresult = (event) => {
 recognition.start();
 
 let components = ["navigation", "banner", "card", "text", "container"]
-
+let word2num = {
+  "one": 1,
+  "two": 2,
+  "three": 3,
+  "four": 4
+}
 function checkCommand(index, command, transcriptArray) {
   switch(command) {
     case "add":
@@ -50,7 +53,13 @@ function checkCommand(index, command, transcriptArray) {
       render.scrollTop = render.scrollHeight;
       break;
     case "remove":
-      // code block
+      if(transcriptArray[index + 1] !== undefined && components.includes(transcriptArray[index + 1])){
+          document.getElementById(`${transcriptArray[index + 1]}-${word2num[transcriptArray[index + 2]]}`).style.display = 'none';
+          if (first) {
+              document.getElementById("initial-message").style.display = "none";
+              first = false;
+            }
+      }
       break;
     case "make":
       // code block
@@ -88,26 +97,27 @@ function getCodedString(component) {
   switch(component) {
       case "navigation":
         // code block
-        var code = Components.navigation
-          Counters.navigationCounter++;
+        var code = Components.getNavigation(counter.navigationCounter);
+          counter.navigationCounter++;
           return code;
       case "banner":
-          var code = Components.banner
-          Counters.bannerCounter++;
+          var code = Components.getBanner(counter.bannerCounter);
+          counter.bannerCounter++;
+          console.log("BANNER COUNT:", counter.bannerCounter);
           return code;
       case "card":
         // code block
-        var code = Components.card
-        Counters.cardCounter++;
+        var code = Components.getCard(counter.cardCounter);
+        counter.cardCounter++;
         return code;
       case "text":
       // code block
-        var code = Components.text
-        Counters.containerCounter++;
+        var code = Components.getText(counter.textCounter);
+        counter.textCounter++;
         return code;
       case "container":
-        var code = Components.container
-        Counters.containerCounter++;
+        var code = Components.getContainer(counter.textCounter);
+        counter.textCounter++;
         return code;
       default:
         // code block
