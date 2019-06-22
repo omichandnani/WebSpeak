@@ -1,7 +1,7 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
+// const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const app = express();
 
 app.use(expressLayouts);
