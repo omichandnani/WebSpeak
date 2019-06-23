@@ -46,6 +46,23 @@ let word2num = {
 
 function checkCommand(index, command, transcriptArray) {
   switch(command) {
+    case "deploy":
+    if (transcriptArray[index + 1] !== null) {
+      var data = {
+        name: transcriptArray[index + 1],
+        site: document.getElementById("render").innerHTML
+      }
+      fetch("/deploy", {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(data), // data can be `string` or {object}!
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json())
+      .then(response => console.log('Success:', JSON.stringify(response)))
+      .catch(error => console.log(error));
+      }
+    break;
     case "add":
       // code block
       if(!isSubCommand(index, command, transcriptArray)) {
