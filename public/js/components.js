@@ -3,9 +3,9 @@ class Components {
     return `<div id="banner-${counter}" class="banner parentPosition" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(public/img/wave.jpg); height: 70%">
               <span class="badge badge-pill badge-secondary badgePosition">banner-${counter}</span>
               <div class="container" style="height: 100%; width: 100%; display:flex; flex-direction: column; justify-content: center; align-items: center;">
-                <h1>Title</h1>
-                <p>Description</p>
-                <a class="btn btn-success" href="#">Get Started</a>
+                <h1>WebSpeak</h1>
+                <p>Think out loud</p>
+                <a class="btn btn-success" href="#">Start hacking</a>
               </div>
             </div>`
   }
@@ -25,12 +25,26 @@ class Components {
   }
 
   static getCard(counter) {
+    var url = "";
+    var title = "Title here";
+    if(counter == 1) {
+      url = "public/img/omi.jpeg";
+      title = "Omi Chandnani";
+    } else if (counter == 2) {
+      url = "public/img/mohamed.jpg";
+      title = "Mohamed Ibrahim";
+    } else if (counter == 3) {
+      url = "public/img/khalid.jpg";
+      title = "Khalid Radwan";
+    } else {
+      url = "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"
+    }
     return `<div id="card-${counter}" class="card-trip parentPosition" style="margin: 20px;">
               <span class="badge badge-pill badge-secondary badgePosition">card-${counter}</span>
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg">
+              <img src="${url}">
               <div class="card-trip-infos">
                 <div>
-                  <h2>Title here</h2>
+                  <h2>${title}</h2>
                 </div>
               </div>
             </div>`

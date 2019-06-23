@@ -33,7 +33,7 @@ recognition.onresult = (event) => {
 }
 recognition.start();
 
-let components = ["navigation", "banner", "card", "text", "container", "footer", "email", "about"]
+let components = ["navigation", "banner", "card", "text", "container", "footer", "email", "about", "cards"]
 
 let word2num = {
   "one": 1,
@@ -143,6 +143,8 @@ function isSubCommand(index, command, transcriptArray) {
         // code block
         if(transcriptArray[index+1]=="card"){
           issubcontainer(index,command,transcriptArray)
+        } else if(transcriptArray[index+1]=="cards"){
+          issubcontainerCards(index,command,transcriptArray)
         }
         else if(transcriptArray[index+1]=="text"){
           issubcontainertext(index,command,transcriptArray)
@@ -188,9 +190,24 @@ function isSubCommand(index, command, transcriptArray) {
 function issubcontainer(index,command,transcriptArray){
   if(transcriptArray[index + 3] != undefined) {
     var component = document.getElementById(`${transcriptArray[index + 3]}-${word2num[transcriptArray[index + 4]]}`)
-    if(component !==undefined) {
+    if(component !== null) {
       component.innerHTML += Components.getCard(counter.cardCounter);
       counter.cardCounter++;
+    }
+  }
+}
+
+function issubcontainerCards(index,command,transcriptArray){
+  if(transcriptArray[index + 3] != undefined) {
+    var component = document.getElementById(`${transcriptArray[index + 3]}-${word2num[transcriptArray[index + 4]]}`)
+    if(component !== null) {
+      var code = ""
+      for(var i = 0; i < 3; i++) {
+        code += Components.getCard(counter.cardCounter);
+        counter.cardCounter++;
+      }
+      component.innerHTML += code;
+
     }
   }
 }

@@ -89,7 +89,7 @@ body {
 .card-trip .card-trip-infos {
   padding: 16px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-end;
   position: relative;
 }
@@ -180,7 +180,7 @@ body {
 .aboutus-content p {
   font-size: 16px;
   line-height: 27px; }
-  
+
  /*-- counter --*/
 .counter {
   border: 1px solid #eeeeee;
