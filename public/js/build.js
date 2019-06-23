@@ -130,18 +130,8 @@ function issubcontainer(index,command,transcriptArray){
   if(transcriptArray[index + 3] != undefined) {
     var component = document.getElementById(`${transcriptArray[index + 3]}-${word2num[transcriptArray[index + 4]]}`)
     if(component !==undefined) {
-      component.innerHTML += `<div id="card-${Counters.cardCounter}"  style="margin: 20px;" class="card-trip">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg">
-      <div class="card-trip-infos" padding: 40px>
-        <div>
-          <h2>Title here</h2>
-          <p>Short here!</p>
-        </div>
-        <h2 class="card-trip-pricing">£99.99</h2>
-        <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/>
-      </div>
-    </div>`;
-      Counters.cardCounter++;
+      component.innerHTML += Components.getCard(counter.cardCounter);
+      counter.cardCounter++;
     }
   }
 }
@@ -150,8 +140,8 @@ function issubcontainertext(index,command,transcriptArray){
   if(transcriptArray[index + 3] != undefined) {
     var component = document.getElementById(`${transcriptArray[index + 3]}-${word2num[transcriptArray[index + 4]]}`)
     if(component !==undefined) {
-      component.innerHTML += `<h4 id="card-${Counters.textCounter}">AaBbCc</h4>`;
-      Counters.textCounter++;
+      component.innerHTML += Components.getText(counter.textCounter);
+      counter.textCounter++;
     }
   }
 }
@@ -180,12 +170,13 @@ function getCodedString(component) {
         counter.textCounter++;
         return code;
       case "container":
-        var code = Components.getContainer(counter.textCounter);
+        var code = Components.getContainer(counter.containerCounter);
         counter.textCounter++;
         return code;
       case "email" :
         var code = Components.getEmail(counter.emailCounter);
         counter.emailCounter++;
+        return code;
       case "footer":
         var code = Components.getFooter(counter.footerCounter);
         counter.footerCounter++;
