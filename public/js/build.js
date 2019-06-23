@@ -239,8 +239,8 @@ function getCodedString(component) {
       case "navigation":
         // code block
         var code = Components.getNavigation(counter.navigationCounter);
-          counter.navigationCounter++;
-          return code;
+        counter.navigationCounter++;
+        break;
       case "banner":
           var code = Components.getBanner(counter.bannerCounter);
           counter.bannerCounter++;
