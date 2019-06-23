@@ -1,3 +1,4 @@
+const WebSpeak = lib.mibrah42.WebSpeak['@dev'];
 console.log("HELLO WORLD");
 let baseURL = "https://source.unsplash.com/900x600/?";
 var first = true;
@@ -49,16 +50,24 @@ function checkCommand(index, command, transcriptArray) {
       // code block
       if(!isSubCommand(index, command, transcriptArray)) {
         if(transcriptArray[index + 1] != undefined) {
+          console.log("COUNTER:", counter.getCounter(transcriptArray[index + 1]))
           if(components.includes(transcriptArray[index + 1] )) {
-            render.innerHTML += getCodedString(transcriptArray[index + 1])
-            if (first) {
-              document.getElementById("initial-message").style.display = "none";
-              first = false;
-            }
+            WebSpeak({
+                component: transcriptArray[index + 1],
+                counter: counter.getCounter(transcriptArray[index + 1])
+              }).then(data => {
+                render.innerHTML += data;
+                counter.updateCounter(transcriptArray[index + 1]);
+                if (first) {
+                  document.getElementById("initial-message").style.display = "none";
+                  first = false;
+                }
+                render.scrollTop = render.scrollHeight;
+              });
           }
         }
       }
-      render.scrollTop = render.scrollHeight;
+
       break;
     case "remove":
       if(transcriptArray[index + 2] !== undefined && components.includes(transcriptArray[index + 1])){
