@@ -28,7 +28,7 @@ recognition.onresult = (event) => {
 }
 recognition.start();
 
-let components = ["navigation", "banner", "card", "text", "container"]
+let components = ["navigation", "banner", "card", "text", "container", "email"]
 let word2num = {
   "one": 1,
   "two": 2,
@@ -69,9 +69,6 @@ function checkCommand(index, command, transcriptArray) {
               first = false;
             }
       }
-      break;
-    case "make":
-      // code block
       break;
     default:
       // code block
@@ -120,9 +117,6 @@ function isSubCommand(index, command, transcriptArray) {
           }
       }
         return true;
-      case "about":
-      // code block
-      return true;
       default:
         // code block
         return false
@@ -187,6 +181,10 @@ function getCodedString(component) {
       case "container":
         var code = Components.getContainer(counter.textCounter);
         counter.textCounter++;
+        return code;
+      case "email" :
+        var code = Components.getEmail(counter.emailCounter);
+        counter.emailCounter++;
         return code;
       default:
         // code block
