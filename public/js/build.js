@@ -28,7 +28,7 @@ recognition.onresult = (event) => {
 }
 recognition.start();
 
-let components = ["navigation", "banner", "card", "text", "container", "footer", "email"]
+let components = ["navigation", "banner", "card", "text", "container", "footer", "email", "about"]
 
 let word2num = {
   "one": 1,
@@ -181,6 +181,9 @@ function getCodedString(component) {
         var code = Components.getFooter(counter.footerCounter);
         counter.footerCounter++;
         return code;
+      case "about" : 
+        var code = Components.getAboutUs(counter.aboutUsCounter);
+        return code;  
       default:
         // code block
         return false
