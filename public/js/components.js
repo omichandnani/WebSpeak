@@ -83,7 +83,7 @@ class Components {
   }
 
   static getAboutUs(counter){
-    return `<div class="aboutus-area parentPosition" id="about-${counter}">
+    return `<div class="aboutus-area parentPosition" id="about-${counter}" style="background-color: #F6FAFD;">
     <span class="badge badge-pill badge-secondary badgePosition">about-${counter}</span>
     <div class="container">
         <div class="row">
