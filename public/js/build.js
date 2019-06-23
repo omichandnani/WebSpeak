@@ -58,8 +58,7 @@ function checkCommand(index, command, transcriptArray) {
         headers:{
           'Content-Type': 'application/json'
         }
-      }).then(res => res.json())
-      .then(response => console.log('Success:', JSON.stringify(response)))
+      }).then(res => window.location.href = res.url)
       .catch(error => console.log(error));
       }
     break;
