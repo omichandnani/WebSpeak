@@ -91,7 +91,7 @@ class Components {
                 <a href="#"><i class="fab fa-linkedin"></i></a>
               </div>
               <div class="footer-copyright">
-                This footer is made with <i class="fas fa-heart"></i> at EngHack
+                This website is made with <i class="fas fa-heart"></i> at EngHack
               </div>
             </div>`;
   }
