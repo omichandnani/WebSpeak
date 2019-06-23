@@ -28,7 +28,8 @@ recognition.onresult = (event) => {
 }
 recognition.start();
 
-let components = ["navigation", "banner", "card", "text", "container", "email"]
+let components = ["navigation", "banner", "card", "text", "container", "footer", "email"]
+
 let word2num = {
   "one": 1,
   "two": 2,
@@ -63,7 +64,7 @@ function checkCommand(index, command, transcriptArray) {
             var element = document.getElementById(`${transcriptArray[index + 1]}-${word2num[transcriptArray[index + 2]]}`);
             element.parentNode.removeChild(element);
           }
-          
+
           if (first) {
               document.getElementById("initial-message").style.display = "none";
               first = false;
@@ -185,6 +186,9 @@ function getCodedString(component) {
       case "email" :
         var code = Components.getEmail(counter.emailCounter);
         counter.emailCounter++;
+      case "footer":
+        var code = Components.getFooter(counter.footerCounter);
+        counter.footerCounter++;
         return code;
       default:
         // code block
