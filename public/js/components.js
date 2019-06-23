@@ -31,10 +31,7 @@ class Components {
               <div class="card-trip-infos">
                 <div>
                   <h2>Title here</h2>
-                  <p>Short here!</p>
                 </div>
-                <h2 class="card-trip-pricing">£99.99</h2>
-                <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/>
               </div>
             </div>`
   }
@@ -86,7 +83,7 @@ class Components {
   }
 
   static getAboutUs(counter){
-    return `<div class="aboutus-area parentPosition" id="about-${counter}">
+    return `<div class="aboutus-area parentPosition" id="about-${counter}" style="background-color: #F6FAFD;">
     <span class="badge badge-pill badge-secondary badgePosition">about-${counter}</span>
     <div class="container">
         <div class="row">
