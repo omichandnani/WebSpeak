@@ -45,6 +45,23 @@ class Components {
     </h4>`
   }
 
+  static getEmail(counter) {
+    return `<div class="container" style="width: 60%;"><form>
+  <div class="form-group" id="email-${counter}">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <div style="display: flex; justify-content: flex-end;">
+  <a class="btn btn-primary" style=" color: white;">Send</a>
+  </div>
+</form></div>`
+  }
+
+
   static getContainer(counter) {
     return `<div id="container-${counter}" class="parentPosition" style="height: 300px; width: 100%; padding:20px;"><span class="badge badge-pill badge-secondary badgePosition">container-${counter}</span><div class="container"><div class="row" id="content"></div></div></div>`
   }
