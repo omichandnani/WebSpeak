@@ -86,7 +86,26 @@ class Components {
   }
 
   static getAboutUs(counter){
-
+    return `<div class="aboutus-area parentPosition" id="about-${counter}">
+    <span class="badge badge-pill badge-secondary badgePosition">about-${counter}</span>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+            <div class="col-sm ">    
+                <div class="aboutus-image float-left hidden-sm"><img src="https://devitems.com/preview/sopnovilla/sopnovilla/img/about/1.jpg" alt=""></div>
+                </div>
+            <div class="col-sm">
+                <div class="aboutus-content ">
+                    <h1>About <span>Us</span></h1>
+                    <h4>Mission Statement</h4>
+                    <p>Think out loud! Speak your thoughts into existence! If you are disabled and want a website; you can have it now!</p>
+                    
+                </div>
+            </div>    
+            </div>
+        </div>
+    </div>
+</div>`
   }
    static getComponent(component) {
     switch(component) {
@@ -109,6 +128,9 @@ class Components {
       break;
 
       case "footer" : return Components.getFooter(counter.footerCounter);
+      break;
+
+      case "about" : return Components.getAboutUs(counter.aboutUsCounter);
       break;
     }
 

@@ -7,6 +7,7 @@ class Counters {
     this.containerCounter = 1;
     this.emailCounter = 1;
     this.footerCounter = 1;
+    this.aboutUsCounter = 1;
   }
 }
 var counter = new Counters();
