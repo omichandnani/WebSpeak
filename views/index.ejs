@@ -15,7 +15,7 @@ html, body {
 }
 </style>
 
-<audio id="reader"></audio>
+<audio id="reader" data-autoplay></audio>
 
 <script>
 
@@ -61,9 +61,15 @@ recognition.onresult = (event) => {
 
     } else {
       interimTranscript += transcript;
+      let interimTranscriptArray = interimTranscript.split(" ");
+      if (interimTranscriptArray) > 10 {
+        interimTranscript = "";
+        finalTranscript = "";
+        document.querySelector('#transcription').innerHTML = "";
+      }
     }
   }
-  document.querySelector('#transcription').innerHTML = finalTranscript + '<p style="color:#ddd;">' + interimTranscript + '</p>';
+  document.querySelector('#transcription').innerHTML = finalTranscript + '<p style="color:#ddd; margin: 0px;">' + interimTranscript + '</p>';
 
 }
 recognition.start();

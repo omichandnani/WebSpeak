@@ -88,6 +88,7 @@ class Components {
   static getAboutUs(counter){
 
   }
+
    static getComponent(component) {
     switch(component) {
       case "banner" : return Components.getBanner(counter.bannerCounter);
@@ -111,6 +112,6 @@ class Components {
       case "footer" : return Components.getFooter(counter.footerCounter);
       break;
     }
-
    }
 }
+

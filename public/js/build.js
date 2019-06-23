@@ -1,4 +1,5 @@
 console.log("HELLO WORLD");
+let baseURL = "https://source.unsplash.com/900x600/?";
 var first = true;
 let render = document.getElementById("render");
 window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
@@ -22,9 +23,13 @@ recognition.onresult = (event) => {
       finalTranscript = ""
     } else {
       interimTranscript += transcript;
+      // interimTranscriptArray = interimTranscript.split(" ");
+      // if (interimTranscript.length > 10){
+      //   interimTranscript = ""
+      // }
     }
   }
-  document.querySelector('#transcription').innerHTML = finalTranscript + '<p style="color:#F6FAFD;">' + interimTranscript + '</p>';
+  document.querySelector('#transcription').innerHTML = finalTranscript + '<p style="color:#F6FAFD; margin: 0px;">' + interimTranscript + '</p>';
 }
 recognition.start();
 
@@ -69,6 +74,38 @@ function checkCommand(index, command, transcriptArray) {
               document.getElementById("initial-message").style.display = "none";
               first = false;
             }
+      }
+      break;
+    case "set":
+      if(transcriptArray[index + 5] !== undefined && components.includes(transcriptArray[index + 1])){
+          if (transcriptArray[index + 1] === "banner") {
+            var num = transcriptArray[index + 2];
+            var query = transcriptArray[index + 5];
+            console.log("NUM", num);
+            console.log("QUERY", query);
+            if (!isNaN(num)) {
+              var element = document.getElementById(`${transcriptArray[index + 1]}-${num}`);
+              console.log("!NaN:",element);
+              if (element !== undefined) {
+                fetch(`https://source.unsplash.com/900x600/?${query}`)
+                  .then(data => {
+                    console.log(data.url);
+                    element.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(${data.url})`;
+                  });
+              }
+            } else {
+
+              var element = document.getElementById(`${transcriptArray[index + 1]}-${word2num[transcriptArray[index + 2]]}`);
+              console.log("NaN:",element);
+              if (element !== undefined) {
+                fetch(`https://source.unsplash.com/900x600/?${query}`)
+                  .then(data => {
+                    console.log(data.url);
+                    element.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(${data.url})`;
+                  });
+              }
+            }
+          }
       }
       break;
     default:
