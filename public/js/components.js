@@ -31,10 +31,7 @@ class Components {
               <div class="card-trip-infos">
                 <div>
                   <h2>Title here</h2>
-                  <p>Short here!</p>
                 </div>
-                <h2 class="card-trip-pricing">£99.99</h2>
-                <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/>
               </div>
             </div>`
   }
@@ -86,7 +83,26 @@ class Components {
   }
 
   static getAboutUs(counter){
-
+    return `<div class="aboutus-area parentPosition" id="about-${counter}" style="background-color: #F6FAFD;">
+    <span class="badge badge-pill badge-secondary badgePosition">about-${counter}</span>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+            <div class="col-sm ">    
+                <div class="aboutus-image float-left hidden-sm"><img src="https://devitems.com/preview/sopnovilla/sopnovilla/img/about/1.jpg" alt=""></div>
+                </div>
+            <div class="col-sm">
+                <div class="aboutus-content ">
+                    <h1>About <span>Us</span></h1>
+                    <h4>Mission Statement</h4>
+                    <p>Think out loud! Speak your thoughts into existence! If you are disabled and want a website; you can have it now!</p>
+                    
+                </div>
+            </div>    
+            </div>
+        </div>
+    </div>
+</div>`
   }
 
    static getComponent(component) {
@@ -110,6 +126,9 @@ class Components {
       break;
 
       case "footer" : return Components.getFooter(counter.footerCounter);
+      break;
+
+      case "about" : return Components.getAboutUs(counter.aboutUsCounter);
       break;
     }
    }
