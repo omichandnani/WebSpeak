@@ -104,6 +104,7 @@ class Components {
     </div>
 </div>`
   }
+
    static getComponent(component) {
     switch(component) {
       case "banner" : return Components.getBanner(counter.bannerCounter);
@@ -130,6 +131,6 @@ class Components {
       case "about" : return Components.getAboutUs(counter.aboutUsCounter);
       break;
     }
-
    }
 }
+
