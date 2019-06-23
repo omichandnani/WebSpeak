@@ -25,7 +25,7 @@ class Components {
   }
 
   static getCard(counter) {
-    return `<div id="card-${counter}" class="card-trip parentPosition">
+    return `<div id="card-${counter}" class="card-trip parentPosition" style="margin: 20px;">
               <span class="badge badge-pill badge-secondary badgePosition">card-${counter}</span>
               <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg">
               <div class="card-trip-infos">
@@ -46,24 +46,27 @@ class Components {
   }
 
   static getEmail(counter) {
-    return `<div class="container" style="width: 60%;"><form>
-  <div class="form-group" id="email-${counter}">
-    <label for="exampleFormControlInput1">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-  <div style="display: flex; justify-content: flex-end;">
-  <a class="btn btn-primary" style=" color: white;">Send</a>
-  </div>
-</form></div>`
+    return `<div id="email-${counter}" class="container parentPosition" style="width: 60%; padding: 20px 0px;">
+    <span class="badge badge-pill badge-secondary badgePosition">email-${counter}</span>
+    <h4 class="text-center">Reach out</h4>
+    <form>
+        <div class="form-group" >
+          <label for="exampleFormControlInput1">Email address</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Example textarea</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div style="display: flex; justify-content: flex-end;">
+        <a class="btn btn-primary" style=" color: white;">Send</a>
+        </div>
+      </form></div>`
   }
 
 
   static getContainer(counter) {
-    return `<div id="container-${counter}" class="parentPosition" style="height: 300px; width: 100%; padding:20px;"><span class="badge badge-pill badge-secondary badgePosition">container-${counter}</span><div class="container"><div class="row" id="content"></div></div></div>`
+    return `<div id="container-${counter}" class="parentPosition" style="height: 300px; width: 100%; padding:20px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;"><span class="badge badge-pill badge-secondary badgePosition">container-${counter}</span></div>`
   }
 
   static getFooter(counter) {
@@ -81,15 +84,19 @@ class Components {
               </div>
             </div>`;
   }
+
+  static getAboutUs(counter){
+
+  }
    static getComponent(component) {
     switch(component) {
       case "banner" : return Components.getBanner(counter.bannerCounter);
       break;
 
-      case "navigation" : return Components.getBanner(counter.navigationCounter);
+      case "navigation" : return Components.getNavigation(counter.navigationCounter);
       break;
 
-      case "card" : return Components.getBanner(counter.cardCounter);
+      case "card" : return Components.getCard(counter.cardCounter);
       break;
 
       case "text" : return Components.getText(counter.textCounter);
@@ -98,6 +105,11 @@ class Components {
       case "container" : return Components.getContainer(counter.containerCounter);
       break;
 
+      case "email" : return Components.getEmail(counter.emailCounter);
+      break;
+
+      case "footer" : return Components.getFooter(counter.footerCounter);
+      break;
     }
 
    }
