@@ -34,7 +34,8 @@ let word2num = {
   "one": 1,
   "two": 2,
   "three": 3,
-  "four": 4
+  "four": 4,
+  "five" : 5
 }
 
 function checkCommand(index, command, transcriptArray) {
@@ -71,6 +72,25 @@ function checkCommand(index, command, transcriptArray) {
             }
       }
       break;
+
+      case "set" :
+      if(transcriptArray[transcriptArray.length] != undefined)
+        var num = transcriptArray[index+2];
+        var string = "";
+        if (transcriptArray.length > 1) {
+          for(var i = 6; i<transcriptArray.length; i++){
+            string += transcriptArray[i] + " ";
+          }
+        } else {
+          string += transcriptArray[transcriptArray.length];
+        }
+        if(!isNaN(num)){
+          var element = document.getElementById(`${transcriptArray[index + 1]}-${num}`);
+          element.textContent = string;
+        } else {
+          var element = document.getElementById(`${transcriptArray[index + 1]}-${word2num[transcriptArray[index + 2]]}`);
+          element.textContent = string;
+        }
     default:
       // code block
       break;
@@ -87,19 +107,19 @@ function isSubCommand(index, command, transcriptArray) {
         }
         else if(transcriptArray[index+1]=="text"){
           issubcontainertext(index,command,transcriptArray)
-
         }
+        
         return true;
       case "below":
       if (transcriptArray[index + 4] !== undefined){
         var num = transcriptArray[index + 4]
         if (!isNaN(num)) {
             var element = document.getElementById(`${transcriptArray[index + 3]}-${num}`);
-            console.log("IS NUM:", Components.getComponent(transcriptArray[index+1]));
+            //console.log("IS NUM:", Components.getComponent(transcriptArray[index+1]));
             element.insertAdjacentHTML("afterend", Components.getComponent(transcriptArray[index+1]));
           } else {
             var element = document.getElementById(`${transcriptArray[index + 3]}-${word2num[transcriptArray[index+4]]}`);
-            console.log("IS NOT NUM:", Components.getComponent(transcriptArray[index+1]));
+            //console.log("IS NOT NUM:", Components.getComponent(transcriptArray[index+1]));
             element.insertAdjacentHTML("afterend", Components.getComponent(transcriptArray[index+1]));
           }
       }
@@ -136,12 +156,23 @@ function issubcontainer(index,command,transcriptArray){
   }
 }
 
+// function textbanner(index,command,transcriptArray){
+//   if(transcriptArray[index + 3] != undefined) {
+//     var component = document.getElementById(`${transcriptArray[index + 3]}-${word2num[transcriptArray[index + 4]]}`)
+//     if(component !==undefined) {
+//       component.innerHTML += Components.getText(counter.textCounter);
+//       counter.textCounter++;
+//     }
+//   }
+// }
 function issubcontainertext(index,command,transcriptArray){
   if(transcriptArray[index + 3] != undefined) {
-    var component = document.getElementById(`${transcriptArray[index + 3]}-${word2num[transcriptArray[index + 4]]}`)
+    if(transcriptArray[index + 3] == "container"){
+      var component = document.getElementById(`${"container"}-${word2num[transcriptArray[index + 4]]}`)
     if(component !==undefined) {
       component.innerHTML += Components.getText(counter.textCounter);
       counter.textCounter++;
+      }  
     }
   }
 }
@@ -157,7 +188,6 @@ function getCodedString(component) {
       case "banner":
           var code = Components.getBanner(counter.bannerCounter);
           counter.bannerCounter++;
-          console.log("BANNER COUNT:", counter.bannerCounter);
           return code;
       case "card":
         // code block
@@ -171,7 +201,7 @@ function getCodedString(component) {
         return code;
       case "container":
         var code = Components.getContainer(counter.containerCounter);
-        counter.textCounter++;
+        counter.containerCounter++;
         return code;
       case "email" :
         var code = Components.getEmail(counter.emailCounter);
