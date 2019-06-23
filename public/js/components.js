@@ -88,7 +88,7 @@ class Components {
     <div class="container">
         <div class="row">
             <div class="col-sm">
-            <div class="col-sm ">    
+            <div class="col-sm ">
                 <div class="aboutus-image float-left hidden-sm"><img src="https://devitems.com/preview/sopnovilla/sopnovilla/img/about/1.jpg" alt=""></div>
                 </div>
             <div class="col-sm">
@@ -96,9 +96,8 @@ class Components {
                     <h1>About <span>Us</span></h1>
                     <h4>Mission Statement</h4>
                     <p>Think out loud! Speak your thoughts into existence! If you are disabled and want a website; you can have it now!</p>
-                    
                 </div>
-            </div>    
+            </div>
             </div>
         </div>
     </div>

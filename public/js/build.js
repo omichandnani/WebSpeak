@@ -78,25 +78,29 @@ function checkCommand(index, command, transcriptArray) {
       }
       break;
     case "set":
-      if(transcriptArray[index + 5] !== undefined && components.includes(transcriptArray[index + 1])){
-          if(transcriptArray[transcriptArray.length] != undefined)
-        var num = transcriptArray[index+2];
-        var string = "";
-        if (transcriptArray.length > 1) {
-          for(var i = 6; i<transcriptArray.length; i++){
-            string += transcriptArray[i] + " ";
+      console.log("outsideSET");
+      if(transcriptArray[transcriptArray.length - 1] !== undefined && transcriptArray[index + 3] === "text"){
+            console.log("SET");
+            var num = transcriptArray[index+2];
+            var string = "";
+            if (transcriptArray.length > 1) {
+              for(var i = 6; i<transcriptArray.length; i++){
+                string += transcriptArray[i] + " ";
+              }
+            } else {
+              string += transcriptArray[transcriptArray.length];
+            }
+            if(!isNaN(num)){
+              var element = document.getElementById(`${transcriptArray[index + 1]}-${num}`);
+              element.innerHTML = `<a class="navbar-brand" style="color: white;" href="/">${string}</a>`;
+            } else {
+              var element = document.getElementById(`${transcriptArray[index + 1]}-${word2num[transcriptArray[index + 2]]}`);
+              element.innerHTML = `<a class="navbar-brand" style="color: white;" href="/">${string}</a>`;
+            }
+            break;
           }
-        } else {
-          string += transcriptArray[transcriptArray.length];
-        }
-        if(!isNaN(num)){
-          var element = document.getElementById(`${transcriptArray[index + 1]}-${num}`);
-          element.textContent = string;
-        } else {
-          var element = document.getElementById(`${transcriptArray[index + 1]}-${word2num[transcriptArray[index + 2]]}`);
-          element.textContent = string;
-        }
-          if (transcriptArray[index + 1] === "banner") {
+      if(transcriptArray[index + 5] !== undefined && components.includes(transcriptArray[index + 1])){
+          if (transcriptArray[index + 1] === "banner" && transcriptArray[index + 3] === "image") {
             var num = transcriptArray[index + 2];
             var query = transcriptArray[index + 5];
             console.log("NUM", num);
@@ -143,7 +147,7 @@ function isSubCommand(index, command, transcriptArray) {
         else if(transcriptArray[index+1]=="text"){
           issubcontainertext(index,command,transcriptArray)
         }
-        
+
         return true;
       case "below":
       if (transcriptArray[index + 4] !== undefined){
@@ -207,7 +211,7 @@ function issubcontainertext(index,command,transcriptArray){
     if(component !==undefined) {
       component.innerHTML += Components.getText(counter.textCounter);
       counter.textCounter++;
-      }  
+      }
     }
   }
 }
@@ -246,9 +250,9 @@ function getCodedString(component) {
         var code = Components.getFooter(counter.footerCounter);
         counter.footerCounter++;
         return code;
-      case "about" : 
+      case "about" :
         var code = Components.getAboutUs(counter.aboutUsCounter);
-        return code;  
+        return code;
       default:
         // code block
         return false

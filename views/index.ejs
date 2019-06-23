@@ -62,7 +62,7 @@ recognition.onresult = (event) => {
     } else {
       interimTranscript += transcript;
       let interimTranscriptArray = interimTranscript.split(" ");
-      if (interimTranscriptArray) > 10 {
+      if (interimTranscriptArray > 10) {
         interimTranscript = "";
         finalTranscript = "";
         document.querySelector('#transcription').innerHTML = "";
