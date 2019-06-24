@@ -15,28 +15,28 @@ html, body {
 }
 </style>
 
-<audio id="reader" data-autoplay></audio>
+<!-- <audio id="reader" data-autoplay></audio> -->
 
 <script>
 
-var reader = document.getElementById("reader");
-fetch("https://aein7.lib.id/language-tutor@dev/texttospeech/", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    message: "Welcome to WebSpeak. Build websites using your voice. Say start to begin.",
-    languageCode: "en-US"
-  })
-})
-.then(response => response.json())
-.then((data) => {
-  reader.src = "data:audio/ogg;base64," + data.audioContent;
-  setTimeout(() => {
-    reader.play();
-  }, 1000);
-});
+// var reader = document.getElementById("reader");
+// fetch("https://aein7.lib.id/language-tutor@dev/texttospeech/", {
+//   method: "POST",
+//   headers: {
+//     "Content-Type": "application/json"
+//   },
+//   body: JSON.stringify({
+//     message: "Welcome to WebSpeak. Build websites using your voice. Say start to begin.",
+//     languageCode: "en-US"
+//   })
+// })
+// .then(response => response.json())
+// .then((data) => {
+//   reader.src = "data:audio/ogg;base64," + data.audioContent;
+//   setTimeout(() => {
+//     reader.play();
+//   }, 1000);
+// });
 
 window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
 let finalTranscript = '';
