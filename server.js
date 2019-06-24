@@ -27,8 +27,8 @@ app.post('/deploy', function(req, res) {
         return console.log(err);
     }
     console.log("The file was saved!");
-    res.send(`/website/${req.body.name}`);
-    // res.redirect(`/website/${req.body.name}`)
+    // res.send(`/website/${req.body.name}`);
+    res.redirect(`/website/${req.body.name}`)
   });
 });
 
