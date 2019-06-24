@@ -1,6 +1,6 @@
 class Components {
   static getBanner(counter) {
-    return `<div id="banner-${counter}" class="banner parentPosition" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(public/img/wave.jpg); height: 70%">
+    return `<div id="banner-${counter}" class="banner parentPosition" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/public/img/wave.jpg); height: 70%">
               <span class="badge badge-pill badge-secondary badgePosition">banner-${counter}</span>
               <div class="container" style="height: 100%; width: 100%; display:flex; flex-direction: column; justify-content: center; align-items: center;">
                 <h1>WebSpeak</h1>
@@ -28,13 +28,13 @@ class Components {
     var url = "";
     var title = "Title here";
     if(counter == 1) {
-      url = "public/img/omi.jpeg";
+      url = "/public/img/omi.jpeg";
       title = "Omi Chandnani";
     } else if (counter == 2) {
-      url = "public/img/mohamed.jpg";
+      url = "/public/img/mohamed.jpg";
       title = "Mohamed Ibrahim";
     } else if (counter == 3) {
-      url = "public/img/khalid.jpg";
+      url = "/public/img/khalid.jpg";
       title = "Khalid Radwan";
     } else {
       url = "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"
