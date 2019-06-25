@@ -1,4 +1,3 @@
-const WebSpeak = lib.mibrah42.WebSpeak['@dev'];
 console.log("HELLO WORLD");
 let baseURL = "https://source.unsplash.com/900x600/?";
 var first = true;
