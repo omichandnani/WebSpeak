@@ -4,14 +4,14 @@ class Components {
               <span class="badge badge-pill badge-secondary badgePosition">banner-${counter}</span>
               <div class="container" style="height: 100%; width: 100%; display:flex; flex-direction: column; justify-content: center; align-items: center;">
                 <h1>WebSpeak</h1>
-                <p>Think out loud</p>
-                <a class="btn btn-success" href="#">Start hacking</a>
+                <p>Build websites using voice</p>
+                <a class="btn btn-success" href="#">Get Started</a>
               </div>
             </div>`
   }
 
   static getNavigation(counter) {
-      return `<nav id="navigation-${counter}" class="navbar navbar-expand-lg parentPosition" style="background-color: #34495e;">
+    return `<nav id="navigation-${counter}" class="navbar navbar-expand-lg parentPosition" style="background-color: #34495e;">
               <span class="badge badge-pill badge-secondary badgePosition" >navigation-${counter}</span>
               <a class="navbar-brand" style="color: white;" href="/">Navbar</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,7 @@ class Components {
   static getCard(counter) {
     var url = "";
     var title = "Title here";
-    if(counter == 1) {
+    if (counter == 1) {
       url = "/public/img/omi.jpeg";
       title = "Omi Chandnani";
     } else if (counter == 2) {
@@ -77,7 +77,7 @@ class Components {
 
 
   static getContainer(counter) {
-    return `<div id="container-${counter}" class="parentPosition" style="height: 300px; width: 100%; padding:20px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;"><span class="badge badge-pill badge-secondary badgePosition">container-${counter}</span></div>`
+    return `<div id="container-${counter}" class="parentPosition" style="min-height: 300px; width: 100%; padding:20px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;"><span class="badge badge-pill badge-secondary badgePosition">container-${counter}</span></div>`
   }
 
   static getFooter(counter) {
@@ -96,7 +96,7 @@ class Components {
             </div>`;
   }
 
-  static getAboutUs(counter){
+  static getAboutUs(counter) {
     return `<div class="aboutus-area parentPosition" id="about-${counter}" style="background-color: #F6FAFD;">
     <span class="badge badge-pill badge-secondary badgePosition">about-${counter}</span>
     <div class="container">

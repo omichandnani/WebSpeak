@@ -36,8 +36,8 @@ app.get('/website/:name', function(req, res) {
   res.render(`${req.params.name}.ejs`)
 });
 
-app.listen(process.env.PORT || 3000, function() {
-  console.log('Example app listening on port 3000!');
+app.listen(process.env.PORT || 5000, function() {
+  console.log('Example app listening on port 5000!');
 });
 
 

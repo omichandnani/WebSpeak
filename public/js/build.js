@@ -34,7 +34,7 @@ recognition.onresult = (event) => {
 }
 recognition.start();
 
-let components = ["navigation", "banner", "card", "text", "container", "footer", "email", "about", "cards"]
+let components = ["navigation", "banner", "card", "text", "container", "footer", "email", "about"]
 
 let word2num = {
   "one": 1,
@@ -67,23 +67,16 @@ function checkCommand(index, command, transcriptArray) {
       if(!isSubCommand(index, command, transcriptArray)) {
         if(transcriptArray[index + 1] != undefined) {
           console.log("COUNTER:", counter.getCounter(transcriptArray[index + 1]))
-          if(components.includes(transcriptArray[index + 1] )) {
-            WebSpeak({
-                component: transcriptArray[index + 1],
-                counter: counter.getCounter(transcriptArray[index + 1])
-              }).then(data => {
-                render.innerHTML += data;
-                counter.updateCounter(transcriptArray[index + 1]);
-                if (first) {
-                  document.getElementById("initial-message").style.display = "none";
-                  first = false;
-                }
-                render.scrollTop = render.scrollHeight;
-              });
+          if (components.includes(transcriptArray[index + 1])) {
+            render.innerHTML += getCodedString(transcriptArray[index + 1])
+            if (first) {
+              document.getElementById("initial-message").style.display = "none";
+              first = false;
+            }
+            render.scrollTop = render.scrollHeight;
           }
         }
       }
-
       break;
     case "remove":
       if(transcriptArray[index + 2] !== undefined && components.includes(transcriptArray[index + 1])){
@@ -232,7 +225,6 @@ function issubcontainerCards(index,command,transcriptArray){
         counter.cardCounter++;
       }
       component.innerHTML += code;
-
     }
   }
 }
