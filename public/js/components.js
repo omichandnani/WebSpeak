@@ -102,9 +102,6 @@ class Components {
     <div class="container">
         <div class="row">
             <div class="col-sm">
-            <div class="col-sm ">
-                <div class="aboutus-image float-left hidden-sm"><img src="https://devitems.com/preview/sopnovilla/sopnovilla/img/about/1.jpg" alt=""></div>
-                </div>
             <div class="col-sm">
                 <div class="aboutus-content ">
                     <h1>About <span>Us</span></h1>

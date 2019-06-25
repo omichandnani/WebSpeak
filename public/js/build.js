@@ -174,11 +174,15 @@ function isSubCommand(index, command, transcriptArray) {
         if (!isNaN(num)) {
             var element = document.getElementById(`${transcriptArray[index + 3]}-${num}`);
             //console.log("IS NUM:", Components.getComponent(transcriptArray[index+1]));
-            element.insertAdjacentHTML("afterend", Components.getComponent(transcriptArray[index+1]));
+            if(element !== null) {
+              element.insertAdjacentHTML("afterend", Components.getComponent(transcriptArray[index+1]));
+            }
           } else {
             var element = document.getElementById(`${transcriptArray[index + 3]}-${word2num[transcriptArray[index+4]]}`);
             //console.log("IS NOT NUM:", Components.getComponent(transcriptArray[index+1]));
-            element.insertAdjacentHTML("afterend", Components.getComponent(transcriptArray[index+1]));
+            if(element !== null) {
+              element.insertAdjacentHTML("afterend", Components.getComponent(transcriptArray[index+1]));
+            }
           }
       }
         return true;
