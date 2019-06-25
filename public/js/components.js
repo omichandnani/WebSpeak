@@ -1,6 +1,6 @@
 class Components {
   static getBanner(counter) {
-    return `<div id="banner-${counter}" class="banner parentPosition" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/public/img/wave.jpg); height: 70%">
+    return `<div id="banner-${counter}" class="banner parentPosition" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/public/img/wave.jpg); height: 350px;">
               <span class="badge badge-pill badge-secondary badgePosition">banner-${counter}</span>
               <div class="container" style="height: 100%; width: 100%; display:flex; flex-direction: column; justify-content: center; align-items: center;">
                 <h1>WebSpeak</h1>
